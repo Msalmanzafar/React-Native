@@ -5,7 +5,9 @@ class NavBar extends Component{
     render(){
         return(
             <View>
-                <Text>Welcome to my App</Text>
+                <Text>Made by: Salman Zafar</Text>
+                <Text>Batch-04 Roll No. 9878</Text>              
+                <Text></Text>                                  
             </View>
         )
     }
