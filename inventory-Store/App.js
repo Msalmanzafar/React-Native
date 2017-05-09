@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View>
-        <NavBar />
+        <NavBar style={{flex: 1}}/>
         <AlbumsList/>
       </View>
     );
