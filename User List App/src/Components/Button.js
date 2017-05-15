@@ -23,7 +23,7 @@ const Styles = {
         marginBottom: 8,
         flex: 1,
         // alignSlef: 'stretch',
-        backgroundColor: '#fff',
+        backgroundColor: '#ffff',
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#007aff',

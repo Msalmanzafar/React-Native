@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from "react-native";
+import { View, Text, Image,Linking } from "react-native";
 import Card from './Card';
 import Button from './Button'
 const AlbumDetails = (props) => {
@@ -11,11 +11,13 @@ const AlbumDetails = (props) => {
                     source={{ uri: props.album.avatar_url }}
                 />
             </View>
+
             <View style={styles.ViewStyles}>
                 <Text>{props.album.login}</Text>
             </View>
+            
             <View >
-                <Button onPress={()=> console.log(props.album.login)}/>
+                <Button onPress={()=> Linking.openURL(props.album.html_url)}/>
             </View>
         </Card>
     );
