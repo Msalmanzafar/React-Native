@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity } from "react-native";
 
-const Button = ({ children }) => {
+const Button = ({ children,onPress }) => {
     return (
-        <TouchableOpacity style={styles.TouchableOpacity}>
+        <TouchableOpacity onPress={onPress} style={styles.TouchableOpacity}>
             <Text style={styles.Button}>
                 {children}
             </Text>
@@ -14,7 +14,7 @@ const Button = ({ children }) => {
 const styles = {
     Button: {
         textAlign: 'center',
-        color: '#007aff',
+        color: '#4caf50',
         fontSize: 16,
         fontWeight: '600',
         paddingTop: 10,
@@ -28,9 +28,11 @@ const styles = {
         backgroundColor: '#ffff',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#007aff',
+        borderColor: '#4caf50',
         marginLeft: 5,
         marginRight: 5,
+        position: 'relative'
+        
     }
 }
 export { Button };
