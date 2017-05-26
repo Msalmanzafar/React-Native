@@ -7,12 +7,12 @@ const AuthReducer = (state = {
     authErrors: '',
 }, action) => {
     switch (action.type) {
-        // case ActionTypes.LoaderActions: {
-        //     return state = {
-        //         ...state,
-        //         loader: !state.loader,
-        //     }
-        // }
+        case ActionTypes.LoaderActions: {
+            return state = {
+                ...state,
+                loader: !state.loader,
+            }
+        }
         case ActionTypes.SiginUpadte: {
             return state = {
                 ...state,
@@ -20,12 +20,12 @@ const AuthReducer = (state = {
                 authSignIn: action.payload
             };
         }
-        // case ActionTypes.AuthErrors: {
-        //     return state = {
-        //         ...state,
-        //         authErrors: action.payload
-        //     };
-        // }
+        case ActionTypes.AuthErrors: {
+            return state = {
+                ...state,
+                authErrors: action.payload
+            };
+        }
 
         default: { }
     }

@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from '../Common';
+import { Button, Card, CardSection, Input, Spinner, EndCardSection } from '../Common';
 import { SignInAction, LogOutAction } from '../../Actions/AuthAction';
 import { connect } from 'react-redux';
+
+const styles = {
+    errorStyle: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: 'red',
+    }
+}
 
 class LoginForm extends Component {
     constructor(props) {
@@ -13,6 +21,7 @@ class LoginForm extends Component {
     state = {
         email: '',
         password: '',
+        errorMessages: '',
     }
 
     ButtonLogIn() {
@@ -31,7 +40,8 @@ class LoginForm extends Component {
     render() {
         const {
             auth,
-            userEmail
+            loader,
+            errorMessage
         } = this.props;
 
 
@@ -56,41 +66,63 @@ class LoginForm extends Component {
                                 onChangeText={password => this.setState({ password })}
                             />
                         </CardSection>
-                        < CardSection >
-                            <Button onPress={this.ButtonLogIn}>
-                                Log In
-                            </Button>
-                        </CardSection>
+                        {(loader === true) ? (
+                            <EndCardSection>
+                                <Spinner size='large' />
+                            </EndCardSection>
+                        ) : (
+                                <EndCardSection >
+                                    <Button onPress={this.ButtonLogIn}>
+                                        Log In
+                                    </Button>
+                                </EndCardSection>
+                            )}
+                        {(errorMessage) ? (
+                            <CardSection>
+                                <Text style={styles.errorStyle}>
+                                    {this.props.errorMessage}
+                                </Text>
+                            </CardSection>
+                        ) : (
+                                <Text>{this.state.errorMessages}</Text>
+                            )}
+
                     </Card>
                 ) : (
                         <Card>
-                            <CardSection>
-                                <Button onPress={this.ButtonLogOut}>
-                                    Log Out
-                                </Button>
-                            </CardSection>
-                            <CardSection>
-                                <Text>{this.props.userEmail.email}</Text>
-                            </CardSection>
+                            {(loader === true) ? (
+                                <CardSection>
+                                    <Spinner size='large' />
+                                </CardSection>
+                            ) : (
+                                    <Card>
+                                        <EndCardSection>
+                                            <Text>{this.props.userEmail.email}</Text>
+                                        </EndCardSection>
+                                        <CardSection>
+                                            <Button onPress={this.ButtonLogOut}>
+                                                Log Out
+                                        </Button>
+                                        </CardSection>
+                                    </Card>
+                                )}
+
                         </Card>
-                    )}
+                    )
+                }
 
             </Card>
         );
     }
 }
-// const styles = {
-//     errorStyle: {
-//         fontSize: 20,
-//         alignSelf: 'center',
-//         color: 'red',
-//     }
-// }
+
 
 const mapStateToProps = (state) => {
     return {
         auth: state.AuthReducer.authLogOut,
         userEmail: state.AuthReducer.authSignIn,
+        loader: state.AuthReducer.loader,
+        errorMessage: state.AuthReducer.authErrors,
     };
 }
 const mapDispatchToProps = (dispatch) => {
