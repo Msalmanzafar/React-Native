@@ -1,25 +1,24 @@
 import React,{Component} from 'react';
-
 import { View } from 'react-native';
-import AboutComp from './AboutComp';
+import LoginForm from './loginForm'
 
 const styles={
-    about:{
+    login:{
         flex:1,
         justifyContent: 'center',
-        // alignItems: 'center',
+        alignItems: 'center',
         backgroundColor: '#7bdcb5',
     }
 }
 
-class AboutUs extends Component{
+class Login extends Component{
     render(){
         return(
-            <View style={styles.about}>
-                <AboutComp/>
+            <View style={styles.login}>
+                <LoginForm/>
             </View>
         );
     }
 }
 
-export default AboutUs;
+export default Login;

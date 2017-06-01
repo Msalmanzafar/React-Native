@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { Button, Card, MainCard, CardSection, HeadingBar, Input, Spinner, EndCardSection } from '../Common';
+import { Button, Card, CardSection, Input, Spinner, EndCardSection } from '../Common';
+import { SignInAction, LogOutAction } from '../../Actions/AuthAction';
+import { connect } from 'react-redux';
 
 const styles = {
     errorStyle: {
-        fontSize: 16,
+        fontSize: 20,
         alignSelf: 'center',
-        color: '#f44336',
-    },
-    FormHeading: {
-        fontSize: 22,
-        alignSelf: 'center',
-        color: '#ffff',
-
-    },
+        color: 'red',
+    }
 }
 
-class LogInForm extends Component {
+class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.ButtonLogIn = this.ButtonLogIn.bind(this);
-        this.ButtonLogOut = this.ButtonLogOut.bind(this);
+        // this.ButtonLogOut = this.ButtonLogOut.bind(this);
     }
     state = {
         email: '',
@@ -35,52 +31,83 @@ class LogInForm extends Component {
             email: email,
             password: password,
         };
-        console.log("user authentication", userLogin);
+        // console.log("user authentication", userLogin);
+        this.props.SignInAction(userLogin);
     }
-    ButtonLogOut() {
-        console.log("LogOut Click");
 
-    }
     render() {
+        const {
+            auth,
+            loader,
+            errorMessage
+        } = this.props;
 
+        console.log("user authentication", auth);
+        
         return (
-            <MainCard>
-
-                <Card>
-                    <HeadingBar >
-                        <Text style={styles.FormHeading}>
-                            Log In
-                        </Text>
-                    </HeadingBar>
-                    <CardSection>
-                        <Input
-                            placeholder='user@gmail.com'
-                            label='Email:'
-                            value={this.state.email}
-                            onChangeText={email => this.setState({ email })}
-                        />
-                    </CardSection>
-                    <CardSection>
-                        <Input
-                            secureTextEntry
-                            placeholder='password'
-                            label='Password:'
-                            value={this.state.password}
-                            onChangeText={password => this.setState({ password })}
-                        />
-                    </CardSection>
-
-                    <EndCardSection >
-                        <Button onPress={this.ButtonLogIn}>
-                            Log In
-                        </Button>
+            <Card>
+                <CardSection>
+                    <Input
+                        placeholder='user@gmail.com'
+                        label='Email:'
+                        value={this.state.email}
+                        onChangeText={email => this.setState({ email })}
+                    />
+                </CardSection>
+                <CardSection>
+                    <Input
+                        secureTextEntry
+                        placeholder='password'
+                        label='Password:'
+                        value={this.state.password}
+                        onChangeText={password => this.setState({ password })}
+                    />
+                </CardSection>
+                {(loader === true) ? (
+                    <EndCardSection>
+                        <Spinner size='large' />
                     </EndCardSection>
-                </Card>
+                ) : (
+                        <EndCardSection >
+                            <Button onPress={this.ButtonLogIn}>
+                                Log In
+                                    </Button>
+                        </EndCardSection>
+                    )}
+                {(errorMessage) ? (
+                    <CardSection>
+                        <Text style={styles.errorStyle}>
+                            {this.props.errorMessage}
+                        </Text>
+                    </CardSection>
+                ) : (
+                        <Text>{this.state.errorMessages}</Text>
+                    )}
 
-            </MainCard>
+            </Card>
         );
     }
 }
 
 
-export default LogInForm;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.AuthReducer.authLogOut,
+        // userEmail: state.AuthReducer.authSignIn,
+        loader: state.AuthReducer.loader,
+        errorMessage: state.AuthReducer.authErrors,
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        SignInAction: (userLogin) => {
+            dispatch(SignInAction(userLogin));
+        },
+        // LogOutAction: () => {
+        //     dispatch(LogOutAction());
+        // }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
+// export default LoginForm;

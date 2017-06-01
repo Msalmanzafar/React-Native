@@ -6,6 +6,6 @@
 import {
   AppRegistry,
 } from 'react-native';
-import ClipboardExample from './src/App'
+import App from './src/App'
 
-AppRegistry.registerComponent('ReactNativeRoutes', () => ClipboardExample);
+AppRegistry.registerComponent('ReactNativeRoutes', () => App);
