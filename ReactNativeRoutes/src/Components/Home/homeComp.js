@@ -6,7 +6,7 @@ import { LogOutAction } from '../../Actions/AuthAction';
 import { connect } from 'react-redux';
 
 
-class AboutComp extends Component {
+class HomeComp extends Component {
     
     constructor(props) {
         super(props);
@@ -18,19 +18,16 @@ class AboutComp extends Component {
     }
     render() {
         let Email = this.props.userEmail.email;
-        console.log("Email",Email)
+        // console.log("Email",Email)
         return (
             <Card>
-                <Text>
-                    This my new App
-                    </Text>
                 <EndCardSection>
                     <Text>{Email}</Text>
                 </EndCardSection>
                 <CardSection>
                     <Button onPress={this.ButtonLogOut}>
                         Log Out
-                        </Button>
+                    </Button>
                 </CardSection>
 
             </Card>
@@ -51,5 +48,6 @@ const mapDispatchToProps = (dispatch) => {
         }
     };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AboutComp);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeComp);
 // export default AboutComp;
+

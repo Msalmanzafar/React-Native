@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
-
 import { View } from 'react-native';
-import AboutComp from './AboutComp';
+import HomeComp from './homeComp';
 
 const styles={
     about:{
@@ -12,14 +11,14 @@ const styles={
     }
 }
 
-class AboutUs extends Component{
+class Home extends Component{
     render(){
         return(
             <View style={styles.about}>
-                <AboutComp/>
+                <HomeComp/>
             </View>
         );
     }
 }
 
-export default AboutUs;
+export default Home;

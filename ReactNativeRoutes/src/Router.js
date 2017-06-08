@@ -2,32 +2,28 @@ import React, { Component } from 'react';
 // import {Header} from './Components/Common';
 import { Text } from 'react-native';
 
-import { Router, Scene } from 'react-native-router-flux';
-import Login from './Components/auth/loginForm'
-import AboutUs from './Components/About/aboutUs'
+import { Router, Scene,Actions } from 'react-native-router-flux';
+import Login from './Components/auth/login'
+import Home from './Components/Home/home'
+import NewStore from './Components/CreateStore/newStore' 
 
-// const styles = {
-//     tabbar: {
-//         backgroundColor: '#7bdcb5'
-//     }
-// }
-
-// Simple component to render something in place of icon
-// const TabIcon = ({ selected, title }) => {
-//   return (
-//     <Text style={{color: selected ? 'red' :'black'}}>{title}</Text>
-//   );
-// }
 
 class Routers extends Component {
     render() {
         return (
             <Router sceneStyle={{ paddingTop: 50 }}>
                 <Scene key='Auth'>
-                    <Scene key="login" component={Login} title="Please Login" />
+                    <Scene key="login" component={Login} hideNavBar />
                 </Scene>
                 <Scene key='main'>
-                    <Scene key="aboutUs" component={AboutUs} title="About-Us" />
+                    <Scene 
+                        onRight={()=> Actions.newStore()}
+                        rightTitle='Add'
+                        key="aboutUs" 
+                        component={Home} 
+                        hideNavBar 
+                    />
+                    <Scene key='newStore' component={NewStore} hideNavBar/>
                 </Scene>
 
             </Router>
@@ -36,30 +32,3 @@ class Routers extends Component {
 }
 
 export default Routers;
-
-
-
- /*<Scene key='root'>
-                    <Scene
-                        key='tabbar'
-                        tabs={true}
-                        style={styles.tabbar}
-                    >
-                        <Scene key='Working' title='About' icon={TabIcon}>
-                            <Scene
-                                key="Header"
-                                component={LogInForm}
-                                title='Login'
-                                initial
-                                
-                            />
-                            <Scene
-                                key='about'
-                                component={AboutUs}
-                                title="About"
-                                
-                            />
-                        </Scene>
-                    </Scene>
-
-                </Scene>*/
