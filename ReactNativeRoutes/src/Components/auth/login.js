@@ -17,7 +17,7 @@ class Login extends Component{
     render(){
         return(
             <View style={styles.login}>
-                <Header headerText='Inventory'/>
+                {/*<Header headerText='Inventory'/>*/}
                 <LoginForm/>
             </View>
         );

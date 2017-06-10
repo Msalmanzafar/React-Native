@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import {Header} from './Components/Common';
-import { Text } from 'react-native';
+// import { Text } from 'react-native';
 
 import { Router, Scene,Actions } from 'react-native-router-flux';
 import Login from './Components/auth/login'
