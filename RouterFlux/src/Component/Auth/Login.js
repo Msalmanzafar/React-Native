@@ -8,7 +8,7 @@ const styles={
     login:{
         flex:1,
         justifyContent: 'center',
-        backgroundColor: '#000000'
+        backgroundColor: 'white'
     }
 }
 class LoginCompo extends Component{

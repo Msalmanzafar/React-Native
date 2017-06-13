@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Text } from 'react-native';
 import { Button, Card, MainCard, CardSection, HeadingBar, Input, Spinner, EndCardSection } from '../Common';
@@ -6,7 +6,7 @@ import { LogOutAction } from '../../Actions/AuthAction';
 import { connect } from 'react-redux';
 
 
-class HomeComp extends Component {
+class HomeComp extends React.PureComponent{
     
     constructor(props) {
         super(props);
@@ -21,9 +21,9 @@ class HomeComp extends Component {
         console.log("Email",Email)
         return (
             <Card>
-                <EndCardSection>
+                {/*<EndCardSection>
                     <Text>{Email}</Text>
-                </EndCardSection>
+                </EndCardSection>*/}
                 <CardSection>
                     <Button onPress={this.ButtonLogOut}>
                         Log Out

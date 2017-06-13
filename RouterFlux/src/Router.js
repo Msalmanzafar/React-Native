@@ -1,21 +1,25 @@
-import React,{Component} from 'react';
+import React from 'react';
 
 import {Actions,Router,Scene} from 'react-native-router-flux';
 import LoginCompo from './Component/Auth/Login';
-import Home from './Component/Home/home';
-import NeweStores from './Component/CreateStore/newStores'
+import NewStores from './Component/NewStores/newStores';
+import Home from './Component/HomePage/Home'
 
 const styles={
     nav:{
-        backgroundColor: '#4caf50',
+        backgroundColor: '#00bcd4',
     },
     authNav:{
-        backgroundColor: '#000000',
+        backgroundColor: '#00bcd4',
+    },
+    newstore:{
+        backgroundColor: '#fbc02d',
         
     }
 }
 
-class Routers extends Component{
+class Routers extends React.PureComponent{
+
     render(){
         return(
             <Router sceneStyle={{ paddingTop: 50 }} >
@@ -29,14 +33,24 @@ class Routers extends Component{
                     />
                 </Scene>
                 <Scene key='main'>
-                    <Scene key='homes' component={Home} 
+                    <Scene 
+                        key='homes' 
+                        component={Home} 
+                        navigationBarStyle={styles.nav}
+                        titleStyle={{color: 'white'}}
                         onRight={()=> Actions.newStore()}
                         rightTitle='Add'
                         title='Inventory Store'
-                        titleStyle={{color: 'white'}}
-                        navigationBarStyle={styles.nav}
                     />
-                    <Scene key='newStore' component={NeweStores} title='Create Store' />
+                    
+                    <Scene 
+                        key='newStore' 
+                        component={NewStores} 
+                        title='Create Store' 
+                        titleStyle={{color: 'white'}}
+                        navigationBarStyle={styles.newstore}
+                        
+                    />
                 </Scene>
             </Router>
         )

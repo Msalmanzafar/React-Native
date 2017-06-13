@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 
 // import {View,Text} from 'react-native'
 // import {Header} from './Component/Common'
@@ -8,7 +8,8 @@ import * as firebase from 'firebase';
 import Routers from './Router';
 
 
-class App extends Component{
+class App extends React.PureComponent{
+    
     componentWillMount() {
         firebase.initializeApp( {
             apiKey: "AIzaSyArVpiyJ0wPxATriQBnPzvbCqjIBVWSppc",
