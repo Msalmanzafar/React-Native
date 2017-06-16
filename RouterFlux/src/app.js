@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import store from './Store/store';
 import * as firebase from 'firebase';
 import Routers from './Router';
+// import PropTypes from 'prop-types';
 
 
 class App extends React.PureComponent{
-    
+
     componentWillMount() {
         firebase.initializeApp( {
             apiKey: "AIzaSyArVpiyJ0wPxATriQBnPzvbCqjIBVWSppc",

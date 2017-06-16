@@ -7,10 +7,10 @@ import { Alert } from 'react-native';
 export function NewStoreData(createStores) {
     return dispatch => {
         // console.log(createStores);
-        var user = firebase.auth().currentUser;
+        // var user = firebase.auth().currentUser;
         // console.log(user.uid, '----------------------')
-        createStores.uId = user.uid;
-        createStores.emailId = user.email;
+        // createStores.uId = user.uid;
+        // createStores.emailId = user.email;
         firebase.database().ref('InventoryStore/').push(createStores)
             .then(() => {
                 dispatch(CreateNewStores());

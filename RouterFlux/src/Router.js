@@ -4,6 +4,7 @@ import {Actions,Router,Scene} from 'react-native-router-flux';
 import LoginCompo from './Component/Auth/Login';
 import NewStores from './Component/NewStores/newStores';
 import Home from './Component/HomePage/Home'
+// import { BrowserRouter } from 'react-router-dom'
 
 const styles={
     nav:{
