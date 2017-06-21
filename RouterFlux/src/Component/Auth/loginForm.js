@@ -118,52 +118,7 @@ const mapDispatchToProps = (dispatch) => {
         SignInAction: (userLogin) => {
             dispatch(SignInAction(userLogin));
         },
-        // LogOutAction: () => {
-        //     dispatch(LogOutAction());
-        // }
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
-// export default LoginForm;
-
-
-// <BlackCard>
-            //     <BlackCardSection>
-            //         <Input
-            //             placeholder='user@gmail.com'
-            //             label='Email:'
-            //             value={this.state.email}
-            //             onChangeText={email => this.setState({ email })}
-            //         />
-            //     </BlackCardSection>
-            //     <BlackCardSection>
-            //         <Input
-            //             secureTextEntry
-            //             placeholder='password'
-            //             label='Password:'
-            //             value={this.state.password}
-            //             onChangeText={password => this.setState({ password })}
-            //         />
-            //     </BlackCardSection>
-            //     {(loader === true) ? (
-            //         <BlackCardSection>
-            //             <Spinner size='large' />
-            //         </BlackCardSection>
-            //     ) : (
-            //             <BlackCardSection >
-            //                 <BlackButton onPress={this.ButtonLogIn}>
-            //                     Log In
-            //                 </BlackButton>
-            //             </BlackCardSection>
-            //         )}
-            //     {(errorMessage) ? (
-            //         <BlackCardSection>
-            //             <Text style={styles.errorStyle}>
-            //                 {this.props.errorMessage}
-            //             </Text>
-            //         </BlackCardSection>
-            //     ) : (
-            //             <Text>{this.state.errorMessages}</Text>
-            //         )}
-            // </BlackCard>

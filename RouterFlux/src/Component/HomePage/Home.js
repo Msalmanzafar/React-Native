@@ -4,6 +4,7 @@ import React from 'react';
 import { Container, Content, Tab, Tabs, Header, TabHeading, Icon } from 'native-base';
 import HomeComp from './homeComp';
 // import ScrollableTabView from 'react-native-scrollable-tab-view'
+
 const Tab1 = () => {
     return (
         <View>
@@ -31,6 +32,7 @@ const Tab3 = () => {
 class Home extends React.PureComponent {
     render() {
         return (
+                
             <Container >
 
                 <Tabs >
