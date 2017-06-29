@@ -10,7 +10,7 @@ import * as firebase from 'firebase';
 
 class App extends Component {
 
-    componentWillMount() {
+    /*componentWillMount() {
         firebase.initializeApp( {
             apiKey: "AIzaSyArVpiyJ0wPxATriQBnPzvbCqjIBVWSppc",
             authDomain: "sky-auth.firebaseapp.com",
@@ -19,7 +19,7 @@ class App extends Component {
             storageBucket: "sky-auth.appspot.com",
             messagingSenderId: "936918632809"
         });
-    }
+    }*/
 
     render() {
         return (
