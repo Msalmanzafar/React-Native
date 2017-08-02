@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {View,Text,StyleSheet,Image} from 'react-native';
 import Login from './Login';
 import Logos from '../../images/logo.png';

@@ -6,19 +6,19 @@ import {Actions} from 'react-native-router-flux'
 export function SignInAction(userLogin) {
     return dispatch => {
         console.log("user Action---", userLogin);
-        dispatch(LoaderDispatch())        
+        // dispatch(LoaderDispatch())        
         firebase.auth()
             .signInWithEmailAndPassword(userLogin.email, userLogin.password)
             .then((user) => {
-                dispatch(LoaderDispatch())
-                dispatch(AuthErrors());                
+                // dispatch(LoaderDispatch())
+                // dispatch(AuthErrors());                
                 dispatch(userSignInUpdate(user));
                 // Actions.main();
             })
             .catch((error) => {
                 // console.log("error",error.message)
                 let message = error.message;
-                dispatch(LoaderDispatch())
+                // dispatch(LoaderDispatch())
                 dispatch(AuthErrors(message));
             });
     }
@@ -28,7 +28,7 @@ export function LogOutAction() {
     return dispatch => {
         firebase.auth().signOut()
             .then(() => {
-                // Actions.Auth();
+                Actions.Auth();
                 dispatch(userSignInUpdate())
                 console.log('success');
             }).catch((error) => {
