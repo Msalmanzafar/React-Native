@@ -1,36 +1,28 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,BackAndroid } from 'react-native';
 import { Button, Card, CardSection } from '../Common'
+import { Actions } from 'react-native-router-flux';
 
 
 class Options extends Component {
     constructor(props) {
         super(props);
         this.ButtonLogIn = this.ButtonLogIn.bind(this);
-        this.doctor = this.doctor.bind(this);
-        this.patient = this.patient.bind(this);
         this.about = this.about.bind(this);
         this.exit = this.exit.bind(this);
 
     }
     ButtonLogIn() {
-        console.log("Login here");
-    }
-    doctor() {
-        console.log("Doctor here");
-
-    }
-    patient() {
-        console.log("Patient here");
-
+        // console.log("Login here");
+        Actions.login();
     }
     about() {
-        console.log("About here");
-
+        // console.log("About here");
+        Actions.about();
     }
     exit() {
-        console.log("exit here");
-
+        // console.log("exit here");
+        BackAndroid.exitApp();
     }
     render() {
         return (
@@ -39,16 +31,6 @@ class Options extends Component {
                     <CardSection>
                         <Button onPress={this.ButtonLogIn}>
                             <Text>LogIn</Text>
-                        </Button>
-                    </CardSection>
-                    <CardSection>
-                        <Button onPress={this.doctor}>
-                            <Text>Doctor</Text>
-                        </Button>
-                    </CardSection>
-                    <CardSection>
-                        <Button onPress={this.patient}>
-                            <Text>Patient</Text>
                         </Button>
                     </CardSection>
                     <CardSection>
@@ -67,4 +49,4 @@ class Options extends Component {
     }
 }
 
-export default Options
+export default Options;

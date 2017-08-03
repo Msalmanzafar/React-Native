@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity } from "react-native";
 
-const Button = ({ children,onPress }) => {
+const Button = ({ children,onPress,onSubmitEditing }) => {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.TouchableOpacity}>
+        <TouchableOpacity onPress={onPress} onSubmitEditing={onSubmitEditing} style={styles.TouchableOpacity}>
             <Text style={styles.Button}>
                 {children}
             </Text>

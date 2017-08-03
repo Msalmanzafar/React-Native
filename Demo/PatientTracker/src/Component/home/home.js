@@ -6,18 +6,18 @@ import Logos from '../images/medical.png'
 
 
 const styles = {
-    header: {
-        backgroundColor: '#b71c1c',
+    // header: {
+    //     backgroundColor: '#b71c1c',
 
-    },
-    button: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 310,
-        // marginTop: 10,
-        marginBottom: 30,
+    // },
+    // button: {
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     width: 310,
+    //     // marginTop: 10,
+    //     marginBottom: 30,
 
-    },
+    // },
     logoContainer: {
         alignItems: 'center',
         flexGrow: 1,
