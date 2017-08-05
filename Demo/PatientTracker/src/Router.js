@@ -34,7 +34,7 @@ class Routers extends Component {
                     <Scene
                         key='login'
                         component={Login}
-                        title='Log In'
+                        hideNavBar
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
                     />
                     <Scene
@@ -48,6 +48,8 @@ class Routers extends Component {
                         component={Doctor}
                         title='Doctor'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                        onRight={() => firebase.auth().signOut()}
+                        rightTitle='Log Out'
                     />
                     <Scene
                         key='about'

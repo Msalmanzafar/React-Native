@@ -6,10 +6,10 @@ import { Card, CardSection } from '../Common'
 class About extends React.PureComponent {
     render() {
         return (
-            <View style={{ marginTop: 50 }}>
+            <View style={{ marginTop: 30 }}>
                 <Card>
                     <CardSection>
-                        <Text>
+                        <Text style={{fontSize: 16, textAlign: 'justify'}}>
                             We propose to develop an Android and iOS application to aid
                             in dispensary patient data management and viewing. The
                             system is aimed to help doctors to enter as well as view

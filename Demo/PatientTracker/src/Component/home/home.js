@@ -34,7 +34,7 @@ class MyHome extends Component {
     render() {
         return (
             <View>
-                <Header headerText='Medico' />
+                 <Header headerText='Medico' /> 
                 <View style={styles.logoContainer}>
                     <Image style={styles.logo} source={Logos} />
                 </View>
