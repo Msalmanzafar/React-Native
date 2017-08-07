@@ -3,11 +3,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Button, Card, CardSection,Header } from '../Common'
 import { LogOutAction } from '../../Action/auth-action'
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+
 
 class Doctor extends Component {
 
     AddPatient(){
-
+        Actions.addpatient();
     }
     logOut(){
         this.props.LogOutAction()

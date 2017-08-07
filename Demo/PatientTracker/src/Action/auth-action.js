@@ -18,8 +18,9 @@ export function ButtonSignUpAction(userSignUp) {
                 )
                 dispatch(LoadingAction());
                 Actions.login();
+                dispatch(ErrorMessageDispatch())                
             })
-            .catch((errors) => {
+            .catch((error) => {
                 var errorMessage = error.message;
                 dispatch(ErrorMessageDispatch(errorMessage))
                 dispatch(LoadingAction());
@@ -39,7 +40,8 @@ export function ButtonLogInAction(userSignIn) {
                 // console.log('userSignIn',user.email);
                 dispatch(signInUpdate(user));
                 dispatch(LoadingAction());
-
+                dispatch(ErrorMessageDispatch())                
+                
             })
             .catch((error) => {
                 // var errorCode = error.code;
@@ -53,21 +55,20 @@ export function ButtonLogInAction(userSignIn) {
 
 export function LogOutAction() {
     return dispatch => {
-
-        firebase.auth().signOut()
-            .then( ()=> {
-                dispatch(signInUpdate());
-
-            }).catch((error) =>{
-                var errorMessage = error.message;
-                Alert.alert(
+        firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            dispatch(signInUpdate());
+        }).catch((error) => {
+            var errorMessage = error.message;
+            Alert.alert(
                     'Medico Alert',
                     errorMessage,
                     [
                         { text: 'OK' },
                     ]
-                )
-            });
+                )// An error happened.
+        });
+
     }
 }
 

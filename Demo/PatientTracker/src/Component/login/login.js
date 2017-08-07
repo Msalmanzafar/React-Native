@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View, Alert, TouchableOpacity, Keyboard } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from '../Common';
+import { Button, Card, CardSection, Input, Spinner, Header } from '../Common';
 import { ButtonLogInAction } from '../../Action/auth-action';
 import Doctor from '../doctor/doctor';
+import { Actions } from 'react-native-router-flux';
+
 
 import { connect } from 'react-redux';
 
@@ -38,11 +40,12 @@ class Login extends React.PureComponent {
             auth,
             loader
         } = this.props;
-        
+
         return (
             <View>
                 {(auth) ? (
                     <View>
+                         <Header headerText='Log In' /> 
                         <Card >
                             <CardSection>
                                 <Input
@@ -89,7 +92,7 @@ class Login extends React.PureComponent {
                                         style={{ color: '#004dcf', }}
                                         onPress={this.SignUp.bind(this)}
                                     >SignUp
-                                </Text>
+                                    </Text>
                                 </TouchableOpacity>
                             </CardSection>
                         </Card>
@@ -113,7 +116,7 @@ const styles = {
 }
 const mapStateToProps = (state) => {
     return {
-        auth: state.AuthReducer.loading,
+        auth: state.AuthReducer.authLogOut,
         ErrorMessage: state.AuthReducer.ErrorMess,
         loader: state.AuthReducer.loading,
     };

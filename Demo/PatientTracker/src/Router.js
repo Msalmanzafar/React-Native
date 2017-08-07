@@ -9,7 +9,7 @@ import Doctor from './Component/doctor/doctor';
 import Login from './Component/login/login'
 import SignUp from './Component/login/signup'
 import About from './Component/about/about'
-
+import AddPatients from './Component/doctor/addPatient/addPatient'
 
 class Routers extends Component {
     componentWillMount() {
@@ -32,24 +32,30 @@ class Routers extends Component {
                         hideNavBar
                     />
                     <Scene
+                        hideNavBar
                         key='login'
                         component={Login}
-                        hideNavBar
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
                     />
                     <Scene
                         key='signup'
                         component={SignUp}
                         title='Sign Up'
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                        titleStyle={{color: '#ffffff' }}
+                        navigationBarStyle={{ backgroundColor: '#32bea6', }}
                     />
                     <Scene
                         key='doctor'
                         component={Doctor}
                         title='Doctor'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
-                        onRight={() => firebase.auth().signOut()}
-                        rightTitle='Log Out'
+                    />
+                    <Scene
+                        key='addpatient'
+                        component={AddPatients}
+                        title='Add Patient'
+                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                        
                     />
                     <Scene
                         key='about'

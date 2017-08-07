@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Keyboard } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from '../Common';
+import { Button, Card, CardSection, Input, Spinner, Header } from '../Common';
 // import * as firebase from 'firebase';
 import { ButtonSignUpAction } from '../../Action/auth-action'
 import { connect } from 'react-redux';
@@ -30,19 +30,12 @@ class SignUp extends React.PureComponent {
     render() {
         const {
             ErrorMessage,
+            loader
         } = this.props;
-        let RenderButton = () => {
-            if (this.props.loader) {
-                return <Spinner size='large' />
-            }
-            return (
-                <Button onPress={this.ButtonSignUp.bind(this)} onSubmitEditing={Keyboard.dismiss()}>
-                    Sign Up
-                </Button>
-            )
-        }
+
         return (
             <View>
+                {/* <Header headerText='Sign Up' /> */}
                 <Card >
                     <CardSection>
                         <Input
@@ -64,10 +57,24 @@ class SignUp extends React.PureComponent {
                         />
                     </CardSection>
                     <Text style={styles.errorStyle}>
-                        {this.props.ErrorMessage}
+                        {(ErrorMessage) ? (
+                            <Text style={styles.errorStyle}>
+                                {this.props.ErrorMessage}
+                            </Text>
+
+                        ) : (
+                                <Text></Text>
+                            )}
                     </Text>
                     <CardSection>
-                        {this.props.RenderButton}
+                        {(!this.props.loader) ? (
+                            <Button onPress={this.ButtonSignUp.bind(this)} >
+                                Sign Up
+                                        </Button>
+                        ) : (
+                                <Spinner size='large' />
+
+                            )}
                     </CardSection>
                 </Card>
             </View>
