@@ -9,7 +9,9 @@ import Doctor from './Component/doctor/doctor';
 import Login from './Component/login/login'
 import SignUp from './Component/login/signup'
 import About from './Component/about/about'
-import AddPatients from './Component/doctor/addPatient/addPatient'
+import AddPatients from './Component/doctor/addPatient/addPatient';
+import PatientDetails from './Component/doctor/PDetails/patientsDetails'
+
 
 class Routers extends Component {
     componentWillMount() {
@@ -54,6 +56,13 @@ class Routers extends Component {
                         key='addpatient'
                         component={AddPatients}
                         title='Add Patient'
+                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                        
+                    />
+                    <Scene
+                        key='patientsDetails'
+                        component={PatientDetails}
+                        title='PatientDetails'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
                         
                     />

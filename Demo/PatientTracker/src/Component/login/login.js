@@ -30,10 +30,9 @@ class Login extends React.PureComponent {
         this.props.ButtonLogInAction(userSignIn);
 
     };
-
-
-
-
+    Cancel(){
+        Actions.home();
+    }
     render() {
         const {
             ErrorMessage,
@@ -45,7 +44,7 @@ class Login extends React.PureComponent {
             <View>
                 {(auth) ? (
                     <View>
-                         <Header headerText='Log In' /> 
+                        <Header headerText='Log In' />
                         <Card >
                             <CardSection>
                                 <Input
@@ -78,12 +77,17 @@ class Login extends React.PureComponent {
                             <CardSection>
                                 {(!this.props.loader) ? (
                                     <Button onPress={this.ButtonLogIn.bind(this)} >
-                                        Sign Up
+                                        Log In
                                         </Button>
                                 ) : (
                                         <Spinner size='large' />
 
                                     )}
+                            </CardSection>
+                            <CardSection>
+                                <Button onPress={this.Cancel.bind(this)} >
+                                    Cancel
+                                </Button>
                             </CardSection>
                             <CardSection>
                                 <Text style={{ marginLeft: 12 }}>Create new account..</Text>

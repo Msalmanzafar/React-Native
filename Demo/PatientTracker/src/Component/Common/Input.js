@@ -22,12 +22,13 @@ const Input = ({ label, value,keyboardType, onChangeText, placeholder, secureTex
 const styles = {
     inputStyle: {
         color: '#000',
-        paddingRight: 5,
-        paddingLeft: 3,
+        // paddingRight: 5,
+        // paddingLeft: 3,
+        padding: 3,
         fontSize: 16,
         // lineheight: 23,
         // backgroundColor: 'white',
-        flex: 2.5,
+        flex: 5,
 
     },
     labelStyle: {
@@ -39,7 +40,9 @@ const styles = {
         height: 40,
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderColor: '#ddd',
+        borderBottomWidth: 1,
     }
 }
 export { Input };

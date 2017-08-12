@@ -4,6 +4,8 @@ const actionTypes ={
     ErrorMessages: 'ErrorMessages',
     GetUserInfo: 'GET_USER_INFO',
     
+    DetailsAction: 'DetailsAction',
+    
 }
 
 export default actionTypes;
