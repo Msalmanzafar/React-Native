@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Keyboard, AsyncStorage, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, Keyboard, AsyncStorage,Alert } from 'react-native';
 import { Button, Card, CardSection, Spinner, Header } from '../../Common';
 import { Actions } from 'react-native-router-flux';
 import { Container, Content, Item, Form, Label, Input } from 'native-base'
-import myDB from '../../AsynStorage/DataStorage'
-var myDBInstance = new myDB();
+
+import {NewPatientAdd} from '../../../Action/PatientDetails'
+import { connect } from 'react-redux';
+
+
 
 
 class AddPatients extends React.PureComponent {
@@ -45,12 +48,12 @@ class AddPatients extends React.PureComponent {
             DateOfBirth: DateOfBirth,
             Gender: Gender,
             OPD: OPD
-        }
-
-        let data = JSON.stringify(PatientInfo);
-        myDBInstance.setTheItem(data.PName, data, function () {
-            Alert.alert('Save', data + ' was saved!');
-        }.bind(this));
+        };
+        this.props.NewPatientAdd(PatientInfo);
+        // let data = JSON.stringify(PatientInfo);
+        // myDBInstance.setTheItem('myKey', data, function () {
+        //     Alert.alert('Save', data + ' was saved!');
+        // }.bind(this));
     }
 
     render() {
@@ -140,5 +143,20 @@ class AddPatients extends React.PureComponent {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        auth: state.AuthReducer,
+        // ErrorMessage: state.AuthReducer.ErrorMess,
+        // loader: state.AuthReducer.loading,
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        NewPatientAdd: (PatientInfo) => {
+            dispatch(NewPatientAdd(PatientInfo));
+        },
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AddPatients);
+// export default AddPatients;
 
-export default AddPatients;

@@ -4,6 +4,7 @@ const actionTypes ={
     ErrorMessages: 'ErrorMessages',
     GetUserInfo: 'GET_USER_INFO',
     
+    AddNewPatient: 'AddNewPatient',
     DetailsAction: 'DetailsAction',
     
 }

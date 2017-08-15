@@ -62,7 +62,8 @@ class Routers extends Component {
                     <Scene
                         key='patientsDetails'
                         component={PatientDetails}
-                        title='PatientDetails'
+                        titleStyle={{color: '#ffffff' }}
+                        title='Patient Details'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
                         
                     />
@@ -70,6 +71,7 @@ class Routers extends Component {
                         key='about'
                         component={About}
                         title='About'
+                        titleStyle={{color: '#ffffff' }}
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
                     />
                 </Scene>

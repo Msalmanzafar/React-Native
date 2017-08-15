@@ -30,6 +30,7 @@ class Doctor extends Component {
     }
     PDetails() {
        this.props.PatientDetailsAction();
+        Actions.patientsDetails();
     }
     logOut() {
         this.props.LogOutAction()
