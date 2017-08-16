@@ -48,7 +48,6 @@ export function PatientDetailsAction() {
     return dispatch => {
          AsyncStorage.getItem('patients', (err, result) => {
             if(result){
-                result = JSON.parse(result);
                 dispatch(DetailsAction(result));
                 // console.log(result)
             }else{
