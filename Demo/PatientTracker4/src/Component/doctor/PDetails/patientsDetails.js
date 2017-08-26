@@ -48,48 +48,48 @@ class PatientDetails extends Component {
         const {
             Detail
         } = this.props;
-        // console.log("details", Detail)
+        console.log("details", Detail)
         
-        let Details= Detail.map((v, i)=> {
-                // console.log('i',i)
-                return(
-                    <SwipeRow
-                        key={i}
-                        leftOpenValue={75}
-                        rightOpenValue={-75}
+        // let Details= Detail.map((v, i)=> {
+        //         // console.log('i',i)
+        //         return(
+        //             <SwipeRow
+        //                 key={i}
+        //                 leftOpenValue={75}
+        //                 rightOpenValue={-75}
                         
-                        left={
-                            <Button success onPress={()=>{Alert.alert(
-                                    'Patent Details',
-                                    v.PName,
-                                    {/* v.FatherName,
-                                    v.Age,
-                                    v.Date,
-                                    v.TREATMENT,
-                                    v.OPD, */}
-                                    [
-                                        {text: 'OK', onPress: () => console.log('OK Pressed')}
-                                    ]
-                                )}}>
-                                <Text>View</Text>
-                            </Button>
-                        }
-                        body={
-                            <View >
-                                <Text>{v.PName}</Text>
-                            </View>
-                        }
-                        right={
-                            <Button danger onPress={this.Trash.bind(this, i)}>
-                                <Text>
-                                    X
-                                </Text>
-                            </Button>
-                        }
-                    />
-                )
-            }
-        )
+        //                 left={
+        //                     <Button success onPress={()=>{Alert.alert(
+        //                             'Patent Details',
+        //                             v.PName,
+        //                             {/* v.FatherName,
+        //                             v.Age,
+        //                             v.Date,
+        //                             v.TREATMENT,
+        //                             v.OPD, */}
+        //                             [
+        //                                 {text: 'OK', onPress: () => console.log('OK Pressed')}
+        //                             ]
+        //                         )}}>
+        //                         <Text>View</Text>
+        //                     </Button>
+        //                 }
+        //                 body={
+        //                     <View >
+        //                         <Text>{v.PName}</Text>
+        //                     </View>
+        //                 }
+        //                 right={
+        //                     <Button danger onPress={this.Trash.bind(this, i)}>
+        //                         <Text>
+        //                             X
+        //                         </Text>
+        //                     </Button>
+        //                 }
+        //             />
+        //         )
+        //     }
+        // )
         // console.log('Details',Details)
         return (
             <View style={{flex:1, marginTop:5}}>
@@ -105,8 +105,7 @@ class PatientDetails extends Component {
                             <Text>Search</Text>
                         </Button>
                     </Item>
-                    
-                       {Details}   
+                      
                 </Content>
             </Container >
             </View>
