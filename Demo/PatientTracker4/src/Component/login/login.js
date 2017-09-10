@@ -44,67 +44,67 @@ class Login extends React.PureComponent {
         return (
             <Container>
                 {(!auth) ? (
-                    <Content>
-                        <Header headerText='Log In' />
-                        <Form>
-                            <Item stackedLabel last>
-                                <Label>Email</Label>
-                                <Input
-                                    keyboardType={'email-address'}
-                                    value={this.state.email}
-                                    onChangeText={email => this.setState({ email })}
-                                />
-                            </Item>
-                            <Item stackedLabel last>
-                                <Label>Password</Label>
-                                <Input
-                                    secureTextEntry={true}
-                                    keyboardType={'numeric'}
-                                    value={this.state.password}
-                                    onChangeText={password => this.setState({ password })}
-                                />
-                            </Item>
-                        </Form>
-                        
-                        <Card >
-                            {(ErrorMessage) ? (
-                                <Text style={styles.errorStyle}>
-                                    {this.props.ErrorMessage}
-                                </Text>
-
-                            ) : (
-                                    <Text></Text>
-                                )}
-                            <CardSection>
-                                {(!this.props.loader) ? (
-                                    <Button onPress={this.ButtonLogIn.bind(this)} >
-                                        Log In
-                                        </Button>
-                                ) : (
-                                        <Spinner size='large' />
-
-                                    )}
-                            </CardSection>
-                            <CardSection>
-                                <Button onPress={this.Cancel.bind(this)} >
-                                    Cancel
-                                </Button>
-                            </CardSection>
-                            <CardSection>
-                                <Text style={{ marginLeft: 12 }}>Create new account..</Text>
-                                <TouchableOpacity>
-                                    <Text
-                                        style={{ color: '#004dcf', }}
-                                        onPress={this.SignUp.bind(this)}
-                                    >SignUp
-                                    </Text>
-                                </TouchableOpacity>
-                            </CardSection>
-                        </Card>
-                    </Content>
+                    <Doctor />
 
                 ) : (
-                        <Doctor />
+                        <Content>
+                            <Header headerText='Log In' />
+                            <Form>
+                                <Item stackedLabel last>
+                                    <Label>Email</Label>
+                                    <Input
+                                        keyboardType={'email-address'}
+                                        value={this.state.email}
+                                        onChangeText={email => this.setState({ email })}
+                                    />
+                                </Item>
+                                <Item stackedLabel last>
+                                    <Label>Password</Label>
+                                    <Input
+                                        secureTextEntry={true}
+                                        keyboardType={'numeric'}
+                                        value={this.state.password}
+                                        onChangeText={password => this.setState({ password })}
+                                    />
+                                </Item>
+                            </Form>
+
+                            <Card >
+                                {(ErrorMessage) ? (
+                                    <Text style={styles.errorStyle}>
+                                        {this.props.ErrorMessage}
+                                    </Text>
+
+                                ) : (
+                                        <Text></Text>
+                                    )}
+                                <CardSection>
+                                    {(!this.props.loader) ? (
+                                        <Button onPress={this.ButtonLogIn.bind(this)} >
+                                            Log In
+                                        </Button>
+                                    ) : (
+                                            <Spinner size='large' />
+
+                                        )}
+                                </CardSection>
+                                <CardSection>
+                                    <Button onPress={this.Cancel.bind(this)} >
+                                        Cancel
+                                </Button>
+                                </CardSection>
+                                <CardSection>
+                                    <Text style={{ marginLeft: 12 }}>Create new account..</Text>
+                                    <TouchableOpacity>
+                                        <Text
+                                            style={{ color: '#004dcf', }}
+                                            onPress={this.SignUp.bind(this)}
+                                        >SignUp
+                                    </Text>
+                                    </TouchableOpacity>
+                                </CardSection>
+                            </Card>
+                        </Content>
                     )}
 
             </Container>
@@ -121,7 +121,7 @@ const styles = {
 }
 const mapStateToProps = (state) => {
     return {
-        auth: state.AuthReducer.authLogOut,
+        auth: state.AuthReducer.auth,
         ErrorMessage: state.AuthReducer.ErrorMess,
         loader: state.AuthReducer.loading,
     };

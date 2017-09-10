@@ -11,7 +11,8 @@ import SignUp from './Component/login/signup'
 import About from './Component/about/about'
 import AddPatients from './Component/doctor/addPatient/addPatient';
 import PatientDetails from './Component/doctor/PDetails/patientsDetails'
-
+import SearchByDates from './Component/doctor/Search/byDates'
+import SearchByNames from './Component/doctor/Search/byNames'
 
 class Routers extends Component {
     componentWillMount() {
@@ -63,6 +64,22 @@ class Routers extends Component {
                         component={PatientDetails}
                         titleStyle={{ color: '#ffffff' }}
                         title='Patient Details'
+                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+
+                    />
+                    <Scene
+                        key='searchbydates'
+                        component={SearchByDates}
+                        titleStyle={{ color: '#ffffff' }}
+                        title='Search By Date'
+                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+
+                    />
+                    <Scene
+                        key='searchbynames'
+                        component={SearchByNames}
+                        titleStyle={{ color: '#ffffff' }}
+                        title='Search By Name'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
 
                     />

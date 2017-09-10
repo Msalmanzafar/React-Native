@@ -15,18 +15,11 @@ export function ButtonSignUpAction(userSignUp) {
                 };
                 firebase.database().ref('users/' + user.uid).set(firebaseData)
                     .then(() => {
-                        Alert.alert(
-                            'Medico Alert',
-                            'Thanks for Sign Up',
-                            [
-                                { text: 'OK' },
-                            ]
-                        )
-                        dispatch(LoadingAction());
-                        dispatch(ErrorMessageDispatch())
-                        Actions.login();
+                            
+                            dispatch(LoadingAction());
+                            dispatch(ErrorMessageDispatch())
+                            Actions.login();
                     });
-
             })
             .catch((error) => {
                 var errorMessage = error.message;
@@ -45,14 +38,12 @@ export function ButtonLogInAction(userSignIn) {
         firebase.auth()
             .signInWithEmailAndPassword(userSignIn.email, userSignIn.password)
             .then((user) => {
-                // console.log('userSignIn',user.email);
                 dispatch(signInUpdate(user));
                 dispatch(LoadingAction());
                 dispatch(ErrorMessageDispatch())
 
             })
             .catch((error) => {
-                // var errorCode = error.code;
                 var errorMessage = error.message;
                 dispatch(ErrorMessageDispatch(errorMessage))
                 dispatch(LoadingAction());
@@ -64,20 +55,20 @@ export function ButtonLogInAction(userSignIn) {
 export function LogOutAction() {
     return dispatch => {
         firebase.auth().signOut()
-        .then(() => {
-            // Sign-out successful.
-            // dispatch(signInUpdate());
-        })
-        .catch((error) => {
-            var errorMessage = error.message;
-            Alert.alert(
-                'Medico Alert',
-                errorMessage,
-                [
-                    { text: 'OK' },
-                ]
-            )// An error happened.
-        });
+            .then(() => {
+                // Sign-out successful.
+                dispatch(signInUpdate());
+            })
+            .catch((error) => {
+                var errorMessage = error.message;
+                Alert.alert(
+                    'Medico Alert',
+                    errorMessage,
+                    [
+                        { text: 'OK' },
+                    ]
+                )// An error happened.
+            });
 
     }
 }

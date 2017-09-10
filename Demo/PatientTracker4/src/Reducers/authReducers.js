@@ -3,7 +3,7 @@ import actionTypes from '../ActionTypes/actionTypes';
 
 const AuthReducer = (state = {
     loading: false,
-    authLogOut: false,
+    auth: false,
     authSignIn: [],
     ErrorMess: '',
 }, action) => {
@@ -17,7 +17,7 @@ const AuthReducer = (state = {
         case actionTypes.SiginUpadte: {
             return state = {
                 ...state,
-                authLogOut: !state.authLogOut,
+                auth: !state.auth,
                 authSignIn: action.payload
             };
         }

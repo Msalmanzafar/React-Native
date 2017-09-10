@@ -39,8 +39,6 @@ class MyHome extends Component {
                     <Image style={styles.logo} source={Logos} />
                 </View>
                 <Options />
-
-
             </View>
         );
     }
