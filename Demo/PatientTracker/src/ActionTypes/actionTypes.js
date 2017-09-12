@@ -7,6 +7,8 @@ const actionTypes ={
     AddNewPatient: 'AddNewPatient',
     DetailsAction: 'DetailsAction',
     
+    SearchByDates: 'SearchByDates',
+    SearchByNames: 'SearchByNames',
 }
 
 export default actionTypes;

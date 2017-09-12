@@ -1,19 +1,26 @@
 // import {handleActions} from 'redux-actions';
 import actionTypes from '../ActionTypes/actionTypes';
 
-const DetailsReducers = (state = {
+const SearchReducers = (state = {
     Loader: false,
-    PatientsDetails: [],
+    SearchDates: [],
+    SearchNames: [],
 }, action) => {
     switch (action.type) {
-        case actionTypes.DetailsAction: {
+        case actionTypes.SearchByDates: {
             return state = {
                 ...state,
-                PatientsDetails: action.payload
+                SearchDates: action.payload
+            }
+        }
+        case actionTypes.SearchByNames: {
+            return state = {
+                ...state,
+                SearchNames: action.payload
             }
         }
         case actionTypes.LoadingTag:{
-            return state={
+            return state = {
                 ...state,
                 Loader: !state.Loader,
             }
@@ -22,4 +29,4 @@ const DetailsReducers = (state = {
     }
     return state;
 }
-export default DetailsReducers;
+export default SearchReducers;

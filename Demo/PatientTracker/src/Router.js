@@ -11,6 +11,8 @@ import SignUp from './Component/login/signup'
 import About from './Component/about/about'
 import AddPatients from './Component/doctor/addPatient/addPatient';
 import PatientDetails from './Component/doctor/PDetails/patientsDetails'
+import SearchByDates from './Component/doctor/Search/byDates'
+import SearchByNames from './Component/doctor/Search/byNames'
 
 
 class Routers extends Component {
@@ -57,7 +59,6 @@ class Routers extends Component {
                         component={AddPatients}
                         title='Add Patient'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
-                        
                     />
                     <Scene
                         key='patientsDetails'
@@ -65,7 +66,20 @@ class Routers extends Component {
                         titleStyle={{color: '#ffffff' }}
                         title='Patient Details'
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
-                        
+                    />
+                    <Scene
+                        key='searchbynames'
+                        component={SearchByNames}
+                        titleStyle={{color: '#ffffff' }}
+                        title='Search By Names'
+                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                    />
+                    <Scene
+                        key='searchbydates'
+                        component={SearchByDates}
+                        titleStyle={{color: '#ffffff' }}
+                        title='Search By Dates'
+                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
                     />
                     <Scene
                         key='about'
@@ -75,17 +89,6 @@ class Routers extends Component {
                         navigationBarStyle={{ backgroundColor: '#32bea6' }}
                     />
                 </Scene>
-
-                {/* <Scene key='main'>
-                    <Scene 
-                        onRight={()=> Actions.newStore()}
-                        rightTitle='Add'
-                        key="aboutUs" 
-                        component={Home} 
-                        hideNavBar 
-                    />
-                    <Scene key='newStore' component={NewStore} hideNavBar/>
-                </Scene> */}
 
             </Router>
         );
