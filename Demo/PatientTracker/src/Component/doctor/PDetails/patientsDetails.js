@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Alert, ScrollView } from 'react-native';
-import { Container, Content,Spinner, Item, Button, List, SwipeRow, Text } from 'native-base';
+import { Container, Content, Spinner, Item, Button, List, SwipeRow, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
@@ -16,12 +16,6 @@ class PatientDetails extends Component {
     SearchByNames() {
         Actions.searchbynames()
     }
-    View(key) {
-        Alert.alert('View Key', key);
-    }
-    Trash(key) {
-        Alert.alert('Trash Key', key);
-    }
     render() {
         const {
             Detail,
@@ -36,18 +30,27 @@ class PatientDetails extends Component {
                     key={i}
                     leftOpenValue={75}
                     rightOpenValue={-75}
-                    style={{ margin: 5}}
+                    style={{ margin: 5 }}
                     left={
-                        <Button success onPress={this.View.bind(this,i)}>
+                        <Button success onPress={() => {
+                            alert(
+                                "Patient Name: " + v.PName + "\n" +
+                                "S/O Name: " + v.FatherName + "\n" +
+                                "Age: " + v.Age + "\n" +
+                                "Date: " + v.Date + "\n" +
+                                "Treatment: " + v.TREATMENT + "\n" +
+                                "OPD: " + v.OPD + "\n"
+                            )
+                        }}>
                             <Text>View</Text>
                         </Button>
                     }
                     body={
-                        <View style={{paddingLeft: 5}}>
+                        <View style={{ paddingLeft: 5 }}>
                             <Text>{v.PName}</Text>
                         </View>
                     }
-                    
+
                 />
             )
         }
@@ -58,10 +61,10 @@ class PatientDetails extends Component {
                 <Container >
                     <Content>
                         <Item last>
-                            <Button style={{marginLeft: 23}} onPress={this.SearchByDates.bind(this)} info>
+                            <Button style={{ marginLeft: 23 }} onPress={this.SearchByDates.bind(this)} info>
                                 <Text>Search By Date</Text>
                             </Button>
-                            <Button style={{marginLeft: 20}} onPress={this.SearchByNames.bind(this)} info>
+                            <Button style={{ marginLeft: 20 }} onPress={this.SearchByNames.bind(this)} info>
                                 <Text>Search By Name</Text>
                             </Button>
                         </Item>
@@ -87,11 +90,3 @@ const mapStateToProps = (state) => {
 }
 export default connect(mapStateToProps)(PatientDetails);
 // export default Doctor;
-
-{/* right={
-                        <Button danger onPress={this.Trash.bind(this, i)}>
-                            <Text>
-                                X
-                                </Text>
-                        </Button>
-                    } */}

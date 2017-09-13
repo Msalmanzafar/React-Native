@@ -25,8 +25,8 @@ export function SearchByDateAction(Search) {
             } else {
                 dispatch(LoadingAction())
                 Alert.alert(
-                    'Patient Details',
-                    'List Was Empty',
+                    'Alert..!',
+                    'Search Not Found',
                     [
                         { text: 'OK', onPress: () => console.log('OK Pressed') }
                     ]
@@ -36,37 +36,6 @@ export function SearchByDateAction(Search) {
     }
 }
 
-// export function SearchByNamesAction(Search) {
-//     tempArray = [];
-//     return dispatch => {
-//         dispatch(LoadingAction())
-//         AsyncStorage.getItem('patients', (err, result) => {
-//             if (result) {
-//                 result = JSON.parse(result);
-//                 for (let i = 0; i < result.length; i++) {
-//                     if ((result[i].PName === Search)) {
-//                         this.tempArray = this.tempArray.concat(result[i]);
-//                     }
-//                 }
-//                 dispatch(SearchActionNames(tempArray));
-//                 dispatch(LoadingAction())
-
-//                 // console.log(tempArray);
-
-//             } else {
-//                 dispatch(LoadingAction())
-//                 Alert.alert(
-//                     'Patient Details',
-//                     'List Was Empty',
-//                     [
-//                         { text: 'OK', onPress: () => console.log('OK Pressed') }
-//                     ]
-//                 );
-//             }
-//         })
-//     }
-// }
-
 function SearchActionDates(payload) {
     return {
         type: actionTypes.SearchByDates,
@@ -74,12 +43,6 @@ function SearchActionDates(payload) {
     }
 }
 
-// function SearchActionNames(payload) {
-//     return {
-//         type: actionTypes.SearchByNames,
-//         payload
-//     }
-// }
 
 function LoadingAction() {
     return {

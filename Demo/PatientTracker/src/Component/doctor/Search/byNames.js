@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Alert, ScrollView } from 'react-native';
 import {
-    Container, Content, Input, Button, Item, SwipeRow, Spinner,Text
+    Container, Content, Input, Button, Item, SwipeRow, Spinner, Text
 } from 'native-base';
 import { connect } from 'react-redux';
 import { SearchByNamesAction } from '../../../Action/SearchByNames'
 
 
 class SearchByNames extends Component {
-    state={
+    state = {
         Search: '',
     }
-    SearchPatient(){
+    SearchPatient() {
         let Search = this.state.Search;
         this.props.SearchByNamesAction(Search);
     }
-    ViewDetails(index){
-        Alert.alert("index",index)
-    }
     render() {
-        const{
+        const {
             SearchName,
             loader
         } = this.props;
@@ -33,7 +30,16 @@ class SearchByNames extends Component {
                     rightOpenValue={-75}
                     style={{ margin: 5, paddingLeft: 3 }}
                     left={
-                        <Button success onPress={this.ViewDetails.bind(this, index)}>
+                        <Button success onPress={() => {
+                            alert(
+                                "Patient Name: " + v.PName + "\n" +
+                                "S/O Name: " + v.FatherName + "\n" +
+                                "Age: " + v.Age + "\n" +
+                                "Date: " + v.Date + "\n" +
+                                "Treatment: " + v.TREATMENT + "\n" +
+                                "OPD: " + v.OPD + "\n"
+                            )
+                        }}>
                             <Text>View</Text>
                         </Button>
                     }

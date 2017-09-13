@@ -23,8 +23,8 @@ export function SearchByNamesAction(Search) {
                 if(flag === 0) {
                     dispatch(LoadingAction())
                     Alert.alert(
-                        'Patient Details',
-                        'List Was Empty',
+                        'Alert..!',
+                        'Search Not Found',
                         [
                             { text: 'OK', onPress: () => console.log('OK Pressed') }
                         ]
