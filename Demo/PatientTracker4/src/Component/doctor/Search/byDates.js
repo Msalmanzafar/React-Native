@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Alert, ScrollView } from 'react-native';
 import {
-    Container, Content, Input, Button, Item, SwipeRow, Spinner
+    Container, Content, Input, Button, Item, SwipeRow, Spinner,Text
 } from 'native-base';
 import { connect } from 'react-redux';
-import { SearchByDate } from '../../../Action/SearchAction'
+import { SearchByDateActions } from '../../../Action/SearchAction'
 
 
 class SearchByDates extends Component {
@@ -13,14 +13,15 @@ class SearchByDates extends Component {
     }
     SearchWithDates(){
         let Search = this.state.Search;
-        this.props.SearchByDate(Search);
+        this.props.SearchByDateActions(Search);
     }
     render() {
         const {
             SearchDate,
+            loader
         } = this.props;
         let SearchByDates = Object.keys(SearchDate).map((key, index) => {
-            let v = Detail[key];
+            let v = SearchDate[key];
             return (
                 <SwipeRow
                     key={index}
@@ -28,7 +29,16 @@ class SearchByDates extends Component {
                     rightOpenValue={-75}
                     style={{ margin: 5, paddingLeft: 3 }}
                     left={
-                        <Button success onPress={this.ViewDetails.bind(this, index)}>
+                        <Button success onPress={()=>{
+                                alert(
+                                    "Patient Name: " +  v.PName +  "\n" +
+                                    "S/O Name: " + v.FatherName + "\n" +
+                                    "Age: " + v.Age + "\n" +
+                                    "Date: " + v.Date + "\n" +
+                                    "Treatment: " + v.TREATMENT + "\n" +
+                                    "OPD: " + v.OPD + "\n"
+                                )
+                            }}>
                             <Text>View</Text>
                         </Button>
                     }
@@ -41,7 +51,7 @@ class SearchByDates extends Component {
             )
         })
         return (
-            <View>
+            <View style={{ flex: 1, marginTop: 5 }}>
                 <Container>
                     <Content>
                         <Item last>
@@ -75,8 +85,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        SearchByDate: (Search) => {
-            dispatch(SearchByDate(Search));
+        SearchByDateActions: (Search) => {
+            dispatch(SearchByDateActions(Search));
         },
     }
 }

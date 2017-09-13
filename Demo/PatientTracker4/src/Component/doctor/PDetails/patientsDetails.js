@@ -14,24 +14,19 @@ class PatientDetails extends Component {
     componentWillMount() {
         console.disableYellowBox = true
     }
-    SearchByDate(){
+    SearchByDate() {
         Actions.searchbydates();
     }
-    SearchByNames(){
+    SearchByNames() {
         Actions.searchbynames();
-    }
-    ViewDetails(key) {
-        Alert.alert('View Key', key);
     }
     render() {
         const {
             Detail,
             loader,
-            SearchDate,
-            Searching
         } = this.props;
         // console.log("details", Detail)
-        
+
         let DetailData = Object.keys(Detail).map((key, index) => {
             let v = Detail[key];
             return (
@@ -41,7 +36,16 @@ class PatientDetails extends Component {
                     rightOpenValue={-75}
                     style={{ margin: 5, paddingLeft: 3 }}
                     left={
-                        <Button success onPress={this.ViewDetails.bind(this, index)}>
+                        <Button success onPress={()=>{
+                                alert(
+                                    "Patient Name: " +  v.PName +  "\n" +
+                                    "S/O Name: " + v.FatherName + "\n" +
+                                    "Age: " + v.Age + "\n" +
+                                    "Date: " + v.Date + "\n" +
+                                    "Treatment: " + v.TREATMENT + "\n" +
+                                    "OPD: " + v.OPD + "\n"
+                                )
+                            }}>
                             <Text>View</Text>
                         </Button>
                     }
@@ -58,29 +62,20 @@ class PatientDetails extends Component {
             <View style={{ flex: 1, marginTop: 5 }}>
                 <Container >
                     <Content>
-                        <Item last>
-                            <Button onPress={this.SearchByDate.bind(this)} info>
+                        <Item >
+                            <Button style={{ marginLeft: 25 }} onPress={this.SearchByDate.bind(this)} info>
                                 <Text>Search By Date</Text>
                             </Button>
-                            <Button onPress={this.SearchByNames.bind(this)} info>
+                            <Button style={{ marginLeft: 20 }} onPress={this.SearchByNames.bind(this)} info>
                                 <Text>Search By Name</Text>
                             </Button>
                         </Item>
                         {(loader === true) ? (
                             <Spinner color='green' />
                         ) : (
-                                <Item>
-                                    {(Searching === true) ? (
-                                        <ScrollView>
-                                            {SearchByDates}
-                                        </ScrollView>
-                                    ) : (
-                                            <ScrollView>
-                                                {DetailData}
-                                            </ScrollView>
-                                        )}
-                                </Item>
-
+                                <ScrollView>
+                                    {DetailData}
+                                </ScrollView>
                             )}
                     </Content>
                 </Container >
@@ -93,8 +88,6 @@ const mapStateToProps = (state) => {
     return {
         Detail: state.DetailsReducers.PatientsDetails,
         loader: state.DetailsReducers.Load,
-        SearchDate: state.SearchReducers.SearchDate,
-        Searching: state.SearchReducers.Detail,
     };
 }
 const mapDispatchToProps = (dispatch) => {

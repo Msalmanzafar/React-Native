@@ -10,15 +10,19 @@ const SearchReducers = (state = {
         case actionTypes.SearchByDateAction: {
             return state = {
                 ...state,
-                Loading: !state.Loading,
                 SearchDate: action.payload
             }
         }
         case actionTypes.SearchByNmaesAction: {
             return state = {
                 ...state,
-                Loading: !state.Loading,
                 SearchNames: action.payload
+            }
+        }
+        case actionTypes.LoadingTag:{
+            return state={
+                ...state,
+                Loading: !state.Loading,
             }
         }
         default: { }
