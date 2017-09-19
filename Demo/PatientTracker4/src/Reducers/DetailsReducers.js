@@ -5,6 +5,7 @@ const DetailsReducers = (state = {
     Details: false,
     PatientsDetails: [],
     Load: false,
+    Error: []
 }, action) => {
     switch (action.type) {
         case actionTypes.DetailsAction: {
@@ -12,6 +13,12 @@ const DetailsReducers = (state = {
                 ...state,
                 Details: !state.Details,
                 PatientsDetails: action.payload
+            }
+        }
+        case actionTypes.ErrorMessages:{
+            return state ={
+                ...state,
+                Error: action.payload
             }
         }
         case actionTypes.LoadingTag:{
