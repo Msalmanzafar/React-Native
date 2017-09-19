@@ -5,11 +5,11 @@ import {
 } from 'native-base';
 import { connect } from 'react-redux';
 import { SearchByDateAction } from '../../../Action/SearchAction'
-
+import DatePicker from 'react-native-datepicker';
 
 class SearchByDates extends Component {
     state = {
-        Search: '',
+        Search: '01-08-2017',
     }
     SearchWithDates() {
         let Search = this.state.Search;
@@ -55,12 +55,30 @@ class SearchByDates extends Component {
                 <Container>
                     <Content>
                         <Item last>
-                            <Input
-                                placeholder='Search'
-                                value={this.state.Search}
-                                onChangeText={Search => this.setState({ Search })}
+                            <DatePicker
+                                style={{ width: 250 }}
+                                date={this.state.Search}
+                                mode="date"
+                                placeholder="select date"
+                                format="DD-MM-YYYY"
+                                minDate="01-08-2017"
+                                maxDate="01-06-2022"
+                                confirmBtnText="Confirm"
+                                cancelBtnText="Cancel"
+                                customStyles={{
+                                    dateIcon: {
+                                        position: 'absolute',
+                                        left: 0,
+                                        top: 4,
+                                        marginLeft: 0
+                                    },
+                                    dateInput: {
+                                        marginLeft: 36
+                                    }
+                                }}
+                                onDateChange={(Search) => { this.setState({ Search: Search }) }}
                             />
-                            <Button onPress={this.SearchWithDates.bind(this)} info>
+                            <Button style={{ marginLeft: 15 }} onPress={this.SearchWithDates.bind(this)} info>
                                 <Text>Search</Text>
                             </Button>
                         </Item>

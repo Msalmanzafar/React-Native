@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Keyboard, AsyncStorage,Alert } from 'react-native';
+import { Text, View, TouchableOpacity, Keyboard, AsyncStorage, Alert } from 'react-native';
 import { Button, Card, CardSection, Spinner, Header } from '../../Common';
 import { Actions } from 'react-native-router-flux';
 import { Container, Content, Item, Form, Label, Input } from 'native-base'
 
-import {NewPatientAdd} from '../../../Action/PatientDetails'
+import { NewPatientAdd } from '../../../Action/PatientDetails'
 import { connect } from 'react-redux';
-
+import DatePicker from 'react-native-datepicker';
 
 
 
 class AddPatients extends React.PureComponent {
-    state = {
-        PName: '',
-        FatherName: '',
-        Age: '',
-        Dates: '',
-        TREATMENT: '',
-        OPD: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            PName: '',
+            FatherName: '',
+            Age: '',
+            date: "01-08-2017",
+            TREATMENT: '',
+            OPD: '',
+        };
+    }
 
-
-    };
     addPatients() {
         let PName = this.state.PName;
         let FatherName = this.state.FatherName;
         let Age = this.state.Age;
-        let Dates = this.state.Dates;
+        let date = this.state.date;
         let TREATMENT = this.state.TREATMENT;
         let OPD = this.state.OPD;
 
@@ -33,7 +35,7 @@ class AddPatients extends React.PureComponent {
             PName: PName,
             FatherName: FatherName,
             Age: Age,
-            Date: Dates,
+            Date: date,
             TREATMENT: TREATMENT,
             OPD: OPD
         };
@@ -41,6 +43,10 @@ class AddPatients extends React.PureComponent {
     }
 
     render() {
+        const {
+            loader,
+            Error
+        } = this.props;
         return (
             <Container >
                 <Content>
@@ -62,15 +68,35 @@ class AddPatients extends React.PureComponent {
                         <Item stackedLabel last>
                             <Label>Age</Label>
                             <Input
+                                keyboardType={'numeric'}
                                 value={this.state.Age}
                                 onChangeText={Age => this.setState({ Age })}
                             />
                         </Item>
                         <Item stackedLabel last>
                             <Label>Date</Label>
-                            <Input
-                                value={this.state.Dates}
-                                onChangeText={Dates => this.setState({ Dates })}
+                            <DatePicker
+                                style={{ width: 300 }}
+                                date={this.state.date}
+                                mode="date"
+                                placeholder="select date"
+                                format="DD-MM-YYYY"
+                                minDate="01-08-2017"
+                                maxDate="01-06-2022"
+                                confirmBtnText="Confirm"
+                                cancelBtnText="Cancel"
+                                customStyles={{
+                                    dateIcon: {
+                                        position: 'absolute',
+                                        left: 0,
+                                        top: 4,
+                                        marginLeft: 0
+                                    },
+                                    dateInput: {
+                                        marginLeft: 36
+                                    }
+                                }}
+                                onDateChange={(date) => { this.setState({ date: date }) }}
                             />
                         </Item>
                         <Item stackedLabel last>
@@ -87,12 +113,28 @@ class AddPatients extends React.PureComponent {
                                 onChangeText={OPD => this.setState({ OPD })}
                             />
                         </Item>
+
                     </Form>
                 </Content>
+                <View >
+                    {(!Error) ? (
+                        <Text></Text>
+                    ) : (
+                            <Text style={{ color: '#f44336', fontSize: 20, textAlign: 'center' }}>
+                                {Error}
+                            </Text>
+                        )}
+                </View>
+
                 <CardSection>
-                    <Button onPress={this.addPatients.bind(this)}>
-                        <Text>Add Patient</Text>
-                    </Button>
+                    {(!this.props.loader) ? (
+                        <Button onPress={this.addPatients.bind(this)}>
+                            <Text>Add Patient</Text>
+                        </Button>
+                    ) : (
+                            <Spinner size='large' />
+                        )}
+
                 </CardSection>
             </Container>
 
@@ -102,8 +144,10 @@ class AddPatients extends React.PureComponent {
 const mapStateToProps = (state) => {
     return {
         auth: state.AuthReducer,
-        // ErrorMessage: state.AuthReducer.ErrorMess,
-        // loader: state.AuthReducer.loading,
+        loader: state.DetailsReducers.Load,
+        Error: state.DetailsReducers.Errors,
+
+
     };
 }
 const mapDispatchToProps = (dispatch) => {

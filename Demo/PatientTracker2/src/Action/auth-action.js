@@ -38,13 +38,7 @@ export function ButtonLogInAction(userSignIn) {
 
 export function LogOutAction() {
     return dispatch => {
-        Alert.alert(
-            "Info..!",
-            'you click log out',
-            [
-                { text: 'OK', onPress: () => console.log('OK Pressed') }
-            ]
-        )
+        Actions.home()
 
     }
 }

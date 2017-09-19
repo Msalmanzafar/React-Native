@@ -20,11 +20,10 @@ class SearchByNames extends Component {
             SearchName,
             loader
         } = this.props;
-        let SearchByNames = Object.keys(SearchName).map((key, index) => {
-            let v = SearchName[key];
+        let SearchByNames = SearchName.map((v, i) => {
             return (
                 <SwipeRow
-                    key={index}
+                    key={i}
                     leftOpenValue={75}
                     rightOpenValue={-75}
                     style={{ margin: 5, paddingLeft: 3 }}

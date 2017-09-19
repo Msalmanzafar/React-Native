@@ -27,11 +27,12 @@ class PatientDetails extends Component {
         } = this.props;
         // console.log("details", Detail)
 
-        let DetailData = Object.keys(Detail).map((key, index) => {
-            let v = Detail[key];
+        // let DetailData = Object.keys(Detail).map((key, index) => {
+        //     let v = Detail[key];
+       let  DetailData = this.props.Detail.map((v, i) => {
             return (
                 <SwipeRow
-                    key={index}
+                    key={i}
                     leftOpenValue={75}
                     rightOpenValue={-75}
                     style={{ margin: 5, paddingLeft: 3 }}
