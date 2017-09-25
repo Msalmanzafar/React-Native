@@ -11,6 +11,9 @@ import DatePicker from 'react-native-datepicker';
 
 
 class AddPatients extends React.PureComponent {
+    componentWillMount() {
+        console.disableYellowBox = true
+    }
     state = {
         PName: '',
         FatherName: '',
