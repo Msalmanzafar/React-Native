@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,Image } from 'react-native';
-import { Header, Button, Card, CardSection } from '../Common'
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { Button, Card, CardSection } from '../Common'
 import Options from './options'
-// import Logos from '../images/geoturist.png'
+import Logos from '../images/geoturist.png'
 
+import {
+    Header,
+    Body
+} from 'native-base';
 
 const styles = {
     logoContainer: {
@@ -22,10 +26,16 @@ class MyHome extends Component {
     render() {
         return (
             <View >
-                <Header headerText='Tourist Guide' /> 
-                {/* <View style={styles.logoContainer}>
+                <Header>
+                    <Body style={{ flex: 1, alignItems: 'center' }}>
+                        <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>
+                        Family GPS Tracker
+                        </Text>
+                    </Body>
+                </Header>
+                <View style={styles.logoContainer}>
                     <Image style={styles.logo} source={Logos} />
-                </View> */}
+                </View>
                 <Options />
             </View>
         );

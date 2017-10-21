@@ -2,13 +2,12 @@ const actionTypes ={
     SiginUpadte: 'SINGIN_UPDATE',
     LoadingTag: 'LoadingTag',
     ErrorMessages: 'ErrorMessages',
-    GetUserInfo: 'GET_USER_INFO',
     
-    AddNewPatient: 'AddNewPatient',
+    GroupCollection: 'GroupCollection',
     DetailsAction: 'DetailsAction',
-    
-    SearchByDateAction: 'SearchByDateAction',
-    SearchByNmaesAction: 'SearchByNmaesAction',
+    SelectedGroup: 'SelectedGroup',
+    joinGroupDispatch: 'joinGroupDispatch',
+    UserAction: 'UserAction',
     
 }
 

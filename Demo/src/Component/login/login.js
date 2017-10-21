@@ -23,6 +23,7 @@ class Login extends React.PureComponent {
     }
     ButtonLogIn() {
         // console.log("working---------------")
+        
         let email = this.state.email;
         let password = this.state.password;
 
@@ -45,11 +46,10 @@ class Login extends React.PureComponent {
 
         return (
             <Container>
-                {(!auth) ? (
+                {(auth === true) ? (
                     <MapHome />
                 ) : (
                         <Content>
-                            <Header headerText='Log In' />
                             <Form>
                                 <Item stackedLabel last>
                                     <Label>Email</Label>
@@ -120,7 +120,7 @@ const styles = {
 }
 const mapStateToProps = (state) => {
     return {
-        auth: state.AuthReducer.auth,
+        auth: state.AuthReducer.authSignIn,
         ErrorMessage: state.AuthReducer.ErrorMess,
         loader: state.AuthReducer.loading,
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,BackAndroid } from 'react-native';
+import { View, Text, StyleSheet, BackAndroid, AsyncStorage } from 'react-native';
 import { Button, Card, CardSection } from '../Common'
 import { Actions } from 'react-native-router-flux';
 
@@ -14,7 +14,21 @@ class Options extends Component {
     }
     ButtonLogIn() {
         // console.log("Login here");
-        Actions.login();
+        var STORAGE_KEY = '@AsyncStorageExample:key';
+        AsyncStorage.getItem(STORAGE_KEY).then((value) => {
+            // console.log("result---1",value)
+            
+            if (value) {
+            // console.log("result---2",value)
+            
+            //     // result = JSON.parse(result);
+                Actions.maphome();                    
+            } else {
+                Actions.login();
+                // console.log("result null",value)
+            //     //     console.log("result empty",result)
+            }
+        })
     }
     about() {
         // console.log("About here");

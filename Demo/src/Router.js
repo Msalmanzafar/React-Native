@@ -9,16 +9,22 @@ import Login from './Component/login/login'
 import SignUp from './Component/login/signup'
 import About from './Component/about/about'
 import MapHome from './Component/Map/mapHome';
+import TrackerMap from './Component/Map/trackMap';
+import Settings from './Component/Settings/setting';
+import NewCircle from './Component/Settings/newCircle';
+import Groups from './Component/Settings/groups';
+import Join from './Component/Settings/GroupJoin'
+import AdminRights from './Component/Settings/AdminRights';
 
 class Routers extends Component {
     componentWillMount() {
         firebase.initializeApp({
-            apiKey: "AIzaSyBhQyKvqvTYJLJQj5BpZTVPfm6jClHWPyw",
-            authDomain: "touristguide-aa676.firebaseapp.com",
-            databaseURL: "https://touristguide-aa676.firebaseio.com",
-            projectId: "touristguide-aa676",
-            storageBucket: "touristguide-aa676.appspot.com",
-            messagingSenderId: "301170801907"
+            apiKey: "AIzaSyAf0Ijnx0Ri6op4jRbDaFA26Yb6i6_zzq4",
+            authDomain: "gprs-tracker-28f2b.firebaseapp.com",
+            databaseURL: "https://gprs-tracker-28f2b.firebaseio.com",
+            projectId: "gprs-tracker-28f2b",
+            storageBucket: "gprs-tracker-28f2b.appspot.com",
+            messagingSenderId: "513537642472"
         });
     }
     render() {
@@ -31,60 +37,68 @@ class Routers extends Component {
                         hideNavBar
                     />
                     <Scene
-                        hideNavBar
                         key='login'
                         component={Login}
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                        title='Log In'
+                        titleStyle={{ color: '#ffffff' }}
+                        navigationBarStyle={{ backgroundColor: '#3d4cae' }}
                     />
                     <Scene
                         key='signup'
                         component={SignUp}
                         title='Sign Up'
                         titleStyle={{ color: '#ffffff' }}
-                        navigationBarStyle={{ backgroundColor: '#32bea6', }}
+                        navigationBarStyle={{ backgroundColor: '#3d4cae', }}
                     />
                      <Scene
                         key='maphome'
                         component={MapHome}
                         hideNavBar
                     />
-                    {/*<Scene
-                        key='addpatient'
-                        component={AddPatients}
-                        title='Add Patient'
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
-
+                    <Scene
+                        key='tracking'
+                        component={TrackerMap}
+                        title='Group Location'
+                        titleStyle={{ color: '#ffffff' }}
+                        navigationBarStyle={{ backgroundColor: '#3d4cae', }}
                     />
                     <Scene
-                        key='patientsDetails'
-                        component={PatientDetails}
+                        key='settings'
+                        component={Settings}
+                        title='Settings'
                         titleStyle={{ color: '#ffffff' }}
-                        title='Patient Details'
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
-
+                        navigationBarStyle={{ backgroundColor: '#3d4cae', }}
                     />
                     <Scene
-                        key='searchbydates'
-                        component={SearchByDates}
+                        key='groups'
+                        component={Groups}
+                        title='Groups'
                         titleStyle={{ color: '#ffffff' }}
-                        title='Search By Date'
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
-
+                        navigationBarStyle={{ backgroundColor: '#3d4cae', }}
                     />
                     <Scene
-                        key='searchbynames'
-                        component={SearchByNames}
+                        key='groupJoin'
+                        component={Join}
+                        hideNavBar
+                    />
+                    <Scene 
+                        key='adminright'
+                        component={AdminRights}
+                        hideNavBar
+                    />
+                    <Scene
+                        key='circle'
+                        component={NewCircle}
+                        title='New Circle'
                         titleStyle={{ color: '#ffffff' }}
-                        title='Search By Name'
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
-
-                    /> */}
+                        navigationBarStyle={{ backgroundColor: '#3d4cae', }}
+                    />
                     <Scene
                         key='about'
                         component={About}
                         title='About'
                         titleStyle={{ color: '#ffffff' }}
-                        navigationBarStyle={{ backgroundColor: '#32bea6' }}
+                        navigationBarStyle={{ backgroundColor: '#3d4cae' }}
                     />
                 </Scene>
 

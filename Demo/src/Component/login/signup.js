@@ -19,17 +19,15 @@ class SignUp extends React.PureComponent {
         // console.log("working---------------")
         let email1 = this.state.email;
         let password1 = this.state.password;
-
         // this.setState({ error: '', loading: true });
         let userSignUp = {
             email: email1,
             password: password1,
         }
         this.props.ButtonSignUpAction(userSignUp);
-
+        // console.log("working---------------",userSignUp.name)
+        
     };
-
-
 
     render() {
         const {
@@ -59,30 +57,30 @@ class SignUp extends React.PureComponent {
                             />
                         </Item>
                     </Form>
-                
 
-                <Card >
-                    <Text style={styles.errorStyle}>
-                        {(ErrorMessage) ? (
-                            <Text style={styles.errorStyle}>
-                                {this.props.ErrorMessage}
-                            </Text>
 
-                        ) : (
-                                <Text></Text>
-                            )}
-                    </Text>
-                    <CardSection>
-                        {(!this.props.loader) ? (
-                            <Button onPress={this.ButtonSignUp.bind(this)} >
-                                Sign Up
+                    <Card >
+                        <Text style={styles.errorStyle}>
+                            {(ErrorMessage) ? (
+                                <Text style={styles.errorStyle}>
+                                    {this.props.ErrorMessage}
+                                </Text>
+
+                            ) : (
+                                    <Text></Text>
+                                )}
+                        </Text>
+                        <CardSection>
+                            {(!this.props.loader) ? (
+                                <Button onPress={this.ButtonSignUp.bind(this)} >
+                                    Sign Up
                                         </Button>
-                        ) : (
-                                <Spinner size='large' />
+                            ) : (
+                                    <Spinner size='large' />
 
-                            )}
-                    </CardSection>
-                </Card>
+                                )}
+                        </CardSection>
+                    </Card>
                 </Content>
             </Container>
 

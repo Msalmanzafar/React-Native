@@ -1,7 +1,7 @@
 import actionTypes from '../ActionTypes/actionTypes'
 import * as firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { Alert, ToastAndroid } from 'react-native';
+import { Alert, ToastAndroid, AsyncStorage } from 'react-native';
 
 
 export function ButtonSignUpAction(userSignUp) {
@@ -11,7 +11,7 @@ export function ButtonSignUpAction(userSignUp) {
             .then((user) => {
                 let firebaseData = {
                     email: userSignUp.email,
-                    id: user.uid
+                    id: user.uid,
                 };
                 firebase.database().ref('users/' + user.uid).set(firebaseData)
                     .then(() => {
@@ -30,18 +30,35 @@ export function ButtonSignUpAction(userSignUp) {
 }
 
 
-
+var STORAGE_KEY = '@AsyncStorageExample:key';
 export function ButtonLogInAction(userSignIn) {
     return dispatch => {
         dispatch(LoadingAction());
-
+        dispatch(ErrorMessageDispatch())
         firebase.auth()
             .signInWithEmailAndPassword(userSignIn.email, userSignIn.password)
             .then((user) => {
-                ToastAndroid.show('Thanks For Login.', ToastAndroid.SHORT);
-                dispatch(signInUpdate(user));
+                // dispatch(signInUpdate(user));
                 dispatch(LoadingAction());
-                dispatch(ErrorMessageDispatch())
+                AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(user), (err, result) => {
+                    if (err) {
+                        console.log("err>>>", err)
+                    }
+                    else {
+                        AsyncStorage.getItem(STORAGE_KEY, (err, result) => {
+                            if (result) {
+                                console.log("result>>>",result)
+                                result = JSON.parse(result);
+                                dispatch(signInUpdate(result.email));
+                                ToastAndroid.show('Thanks For Login.', ToastAndroid.SHORT);
+                                Actions.maphome();                    
+                                
+                            } else {
+                                // console.log("signInUpdate==>>Error");
+                            }
+                        })
+                    }
+                });
 
             })
             .catch((error) => {
@@ -57,8 +74,9 @@ export function LogOutAction() {
     return dispatch => {
         firebase.auth().signOut()
             .then(() => {
-                // Sign-out successful.
+                AsyncStorage.removeItem(STORAGE_KEY);
                 dispatch(signInUpdate());
+                Actions.login();
             })
             .catch((error) => {
                 var errorMessage = error.message;

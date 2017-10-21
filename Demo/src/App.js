@@ -8,12 +8,15 @@ import Router from './Router';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#b3d2e5',
+    backgroundColor: '#fff176',
     flex: 1,
     marginTop: -50
   }
 });
 class MyApp extends React.PureComponent {
+  componentWillMount() {
+    console.disableYellowBox = true
+  }
   render() {
     return (
       <Provider store={store}>
