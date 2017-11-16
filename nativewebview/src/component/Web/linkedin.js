@@ -19,16 +19,7 @@ class LinkedIn extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: 'white',
-    },
-    //     welcome: {
-    //         textAlign: 'center',
-    //         margin: 10,
-    //         color: 'black'
-    //     },
-
+        flex: 1, 
+    }
 });
 export default LinkedIn;

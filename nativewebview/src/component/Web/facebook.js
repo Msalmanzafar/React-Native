@@ -20,15 +20,6 @@ class FaceBook extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: 'white',
     },
-//     welcome: {
-//         textAlign: 'center',
-//         margin: 10,
-//         color: 'black'
-//     },
-
 });
 export default FaceBook;
